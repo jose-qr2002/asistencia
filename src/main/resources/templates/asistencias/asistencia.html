@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>SENATI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-people-group me-2"></i>Asistencias</h4>
+            </nav>
+            <div class="container mt-3">
+                <div class="formulario row mb-3">
+                    <select class="col-2 mr-1" id="tipoControl">
+                        <option disabled selected>Tipo de Control</option>
+                        <option value="Entrada">Entrada</option>
+                        <option value="Salida">Salida</option>
+                    </select>
+                    <input type="hidden"  id="idAsistencia">
+                    <input type="text" class="col-2 mr-1" placeholder="DNI" id="buscarDni">
+                    <button type="button" class="btn btn-primary col-2" id="guardarAsistencia">Guardar</button>
+                </div>
+                <div class="alert alert-danger mb-3 d-none" id="errorDni">
+                      <strong>¡Error!</strong> El numero de caracteres del dni debe ser de 8
+                </div>
+                <div class="alert alert-danger mb-3 d-none" id="errorControl">
+                      <strong>¡Error!</strong> Tienes que elegir un tipo de control
+                </div>
+                <div class="alert alert-danger mb-3 d-none" id="errorEnvio">
+                      <strong>¡Error!</strong> El dni no esta registrado
+                </div>
+                <div class="row">
+                    <div class="col table-responsive">
+                        <table class="table table-bordered" id="tablaAsistencia">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Persona</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Tipo de Control</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+    <th:block layout:fragment="page-scripts">
+        <script th:src="@{/js/asistencia.js}"></script>
+    </th:block>
+</body>
+</html>

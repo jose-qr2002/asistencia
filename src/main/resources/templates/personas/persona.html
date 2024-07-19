@@ -1,0 +1,94 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>SENATI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-users me-2"></i>Personas</h4>
+            </nav>
+            <div class="container mt-3">
+                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo</button>
+                <div class="row">
+                    <div class="col table-responsive">
+                        <table class="table table-bordered" id="tabla">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Apellidos</th>
+                                    <th>Nombres</th>
+                                    <th>DNI</th>
+                                    <th>Sexo</th>
+                                    <th>Dirección</th>
+                                    <th colspan="2" class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Nueva Persona</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="limpiar()"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row mb-3">
+                                <label class="col-md-3 col-form-label">Nombres</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-md-3 col-form-label">Apellidos</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-md-3 col-form-label">DNI</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="dni" placeholder="DNI">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-md-3 col-form-label">Sexo</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" id="sexo">
+                                        <option disabled selected>Seleccione Sexo</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-md-3 col-form-label">Dirección</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="direccion" placeholder="Direccion">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="persId"></input>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiar()">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="guardar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+    <th:block layout:fragment="page-scripts">
+        <script th:src="@{/js/persona.js}"></script>
+    </th:block>
+</body>
+</html>
